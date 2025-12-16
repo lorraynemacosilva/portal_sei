@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEI Pedro Leopoldo - Portal de Serviços</title>
+    <!-- Carregando Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tema e Fontes (Cores atualizadas conforme fornecido) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // CORES INSTITUCIONAIS FORNECIDAS
+                        'sei-light': '#1b8acb', // Azul Principal (Botões e Destaques)
+                        'sei-accent': '#aec835', // Verde/Amarelo (Toque de Destaque)
+                        // Azul Escuro ajustado para bom contraste com texto branco
+                        'sei-dark': '#105e94', 
+                        'sei-bg': '#f3f4f6', // Fundo levemente cinza
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Importando a fonte Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Estilos customizados para a estética -->
+    <style>
+        body {
+            font-family: 'Inter', 'Inter', sans-serif;
+            background-color: theme('colors.sei-bg');
+        }
+        .card-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+        .card-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Container wrapper para vídeo vertical (9:16) */
+        .vertical-video-wrapper {
+            max-width: 400px; /* Limita a largura máxima no desktop */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .vertical-video-container {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Aspect Ratio (9 / 16) * 100 = 177.77% */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            background: #000;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .vertical-video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que o vídeo preencha o container */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- 1. Cabeçalho (Header) -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <!-- Logo e Nome da Instituição -->
+            <div class="flex items-center space-x-3">
+                <img src="LOGO SEI - colorida.png" alt="Logo SEI Pedro Leopoldo" class="h-12 w-auto shadow-lg">
+                <h1 class="text-2xl font-extrabold text-sei-dark hidden sm:block">
+                    SEI Pedro Leopoldo
+                </h1>
+            </div>
+            <!-- Menu Simples (Atualizado para nova estrutura) -->
+            <nav class="mt-3 sm:mt-0">
+                <a href="#servicos" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Serviços</a>
+                <a href="#multimidia" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Materiais</a>
+                <a href="#contato" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Seção Principal (Hero - Apenas Texto) -->
+    <main class="flex-grow">
+        <div class="bg-sei-dark p-8 text-white text-center shadow-inner">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2">Portal de Acesso e Suporte ao SEI</h2>
+            <p class="text-lg opacity-90 max-w-3xl mx-auto">
+                Encontre rapidamente links, tutoriais e informações essenciais para o uso eficiente do Sistema Eletrônico de Informações (SEI).
+            </p>
+        </div>
+
+        <!-- 3. Área de Botões de Serviço (AGORA NO TOPO DA PÁGINA) -->
+        <section id="servicos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Título com sublinhado na cor de destaque -->
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Acessos Rápidos e Suporte</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+
+                <!-- Botão 1: Link do portal SEI (Cor principal: sei-light) -->
+                <a href="#" target="_blank" class="card-button bg-sei-light text-white p-6 rounded-xl flex flex-col items-center text-center hover:bg-sei-light/90">
+                    <!-- Ícone de Portal/Acesso -->
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    <span class="text-xl font-semibold">Acesso ao Portal SEI</span>
+                    <p class="text-sm mt-1 opacity-80">Clique para iniciar sua sessão no sistema.</p>
+                </a>
+
+                <!-- Botão 2: Solicitação de usuário (Borda e texto na cor escura) -->
+                <a href="#" target="_blank" class="card-button bg-white text-sei-dark border-2 border-sei-dark p-6 rounded-xl flex flex-col items-center text-center hover:bg-sei-bg">
+                    <!-- Ícone de Usuário/Registro -->
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+                    <span class="text-xl font-semibold">Solicitação de Cadastro</span>
+                    <p class="text-sm mt-1 text-gray-600">Formulário para novos usuários e acesso externo.</p>
+                </a>
+
+                <!-- Botão 3: Vídeos (Hover na cor principal) -->
+                <a href="#" target="_blank" class="card-button bg-white text-gray-800 border p-6 rounded-xl flex flex-col items-center text-center hover:border-sei-light hover:text-sei-light">
+                    <!-- Ícone de Vídeo -->
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <span class="text-xl font-semibold">Vídeos e Tutoriais</span>
+                    <p class="text-sm mt-1 text-gray-600">Assista a guias rápidos sobre as funcionalidades do SEI.</p>
+                </a>
+
+                <!-- Botão 4: Próximas capacitações -->
+                <a href="#" target="_blank" class="card-button bg-white text-gray-800 border p-6 rounded-xl flex flex-col items-center text-center hover:border-sei-light hover:text-sei-light">
+                    <!-- Ícone de Calendário/Treinamento -->
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h.01M12 11h.01M15 11h.01M7 15h.01M11 15h.01M15 15h.01M17 12a5 5 0 11-10 0 5 5 0 0110 0zM4 5h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V7a2 2 0 012-2z"></path></svg>
+                    <span class="text-xl font-semibold">Próximas Capacitações</span>
+                    <p class="text-sm mt-1 text-gray-600">Fique por dentro das datas e inscrições para os treinamentos.</p>
+                </a>
+
+                <!-- Botão 5: Materiais de apoio -->
+                <a href="#" target="_blank" class="card-button bg-white text-gray-800 border p-6 rounded-xl flex flex-col items-center text-center hover:border-sei-light hover:text-sei-light">
+                    <!-- Ícone de Documento/Apoio -->
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <span class="text-xl font-semibold">Materiais de Apoio (PDFs/Guias)</span>
+                    <p class="text-sm mt-1 text-gray-600">Baixe manuais, fluxos e modelos de documentos.</p>
+                </a>
+
+                <!-- Botão 6: Agente SEI - Joseias (Texto e Ícone Atualizados) -->
+                <a href="#" target="_blank" class="card-button bg-white text-gray-800 border p-6 rounded-xl flex flex-col items-center text-center hover:border-sei-light hover:text-sei-light">
+                    <!-- Ícone de Chat/Agente (Substituído pelo balão de chat) -->
+                    <svg class="w-10 h-10 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"></path></svg>
+                    <span class="text-xl font-semibold">Agente SEI! usar - Joseias</span>
+                    <p class="text-sm mt-1 text-gray-600">Converse com nosso assistente virtual e tire suas dúvidas.</p>
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- 4. Conteúdo Multimídia (Vídeo e Imagem de Destaque - Movido para baixo) -->
+        <section id="multimidia" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-200">
+            <!-- Título com sublinhado na cor de destaque -->
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Introdução e Destaques</h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                
+                <!-- Coluna 1: Vídeo de Boas-Vindas -->
+                <div id="video" class="lg:order-2">
+                    <h4 class="text-xl font-semibold text-gray-700 mb-4 text-center">Boas-Vindas ao SEI!</h4>
+                    <div class="vertical-video-wrapper shadow-2xl">
+                        <div class="vertical-video-container">
+                            <!-- USE ESTA TAG <video> PARA VÍDEOS VERTICAIS. -->
+                            <!-- SUBSTITUA 'seu_video_vertical.mp4' PELO CAMINHO CORRETO DO SEU VÍDEO. -->
+                            <video 
+                                src="seu_video_vertical.mp4" 
+                                title="Vídeo de Boas-Vindas SEI" 
+                                controls 
+                                poster="https://placehold.co/400x711/105e94/ffffff?text=Video+Vertical+SEI"
+                                class="w-full h-full"
+                            >
+                                Seu navegador não suporta o elemento de vídeo.
+                            </video>
+                        </div>
+                    </div>
+                    <p class="text-center text-gray-600 mt-4 text-sm">
+                        Assista a esta breve introdução para entender como o SEI pode transformar sua rotina de trabalho.
+                    </p>
+                </div>
+
+                <!-- Coluna 2: Imagem de Destaque/Texto Adicional -->
+                <div class="lg:order-1 flex flex-col justify-center h-full">
+                    <h4 class="text-xl font-semibold text-gray-700 mb-4">O que é o SEI?</h4>
+                    <p class="text-gray-600 mb-4">
+                        O Sistema Eletrônico de Informações (SEI) é uma plataforma que permite a produção, edição, assinatura e trâmite de documentos e processos de forma totalmente digital.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Com o SEI, você garante mais agilidade, transparência, segurança e economia de recursos públicos.
+                    </p>
+                    <!-- Placeholder para Imagem de Destaque sobre o SEI (Cor ajustada) -->
+                    <img src="https://placehold.co/800x250/1b8acb/ffffff?text=Imagem+de+Destaque+SEI+-+Eletrônico" 
+                         alt="Ilustração de sistema eletrônico e documentos digitais" 
+                         class="w-full max-w-full rounded-lg shadow-xl"
+                         onerror="this.onerror=null;this.src='https://placehold.co/800x250/1b8acb/ffffff?text=Imagem+de+Destaque+SEI'">
+                </div>
+
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- 5. Rodapé (Footer) -->
+    <footer id="contato" class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:flex md:justify-between md:items-center">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <p class="text-lg font-semibold mb-1">SEI Pedro Leopoldo</p>
+                <p class="text-sm text-gray-400">Sistema Eletrônico de Informações</p>
+                <p class="text-sm text-gray-400 mt-2">© 2025 Todos os direitos reservados.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="font-medium">Contato e Suporte:</p>
+                <p class="text-sm text-gray-400">Telefone: (31) XXXX-XXXX</p>
+                <p class="text-sm text-gray-400">E-mail: suporte.sei@pedroleopoldo.mg.gov.br</p>
+                <!-- Links de redes sociais (substituir #) -->
+                <div class="mt-3 space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-sei-light">Facebook</a>
+                    <a href="#" class="text-gray-400 hover:text-sei-light">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
