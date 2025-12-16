@@ -58,13 +58,13 @@
             background: #000;
             border-radius: 0.75rem; /* rounded-xl */
         }
-        .vertical-video-container video {
+        /* ESTILO ATUALIZADO PARA SUPORTAR IFRAME DO YOUTUBE */
+        .vertical-video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Garante que o vídeo preencha o container */
         }
     </style>
 </head>
@@ -101,7 +101,7 @@
         <!-- 3. Área de Botões de Serviço (AGORA NO TOPO DA PÁGINA) -->
         <section id="servicos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <!-- Título com sublinhado na cor de destaque -->
-            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Acessos Rápidos e Suporte</h3>
+            <h3 class="2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Acessos Rápidos e Suporte</h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
 
@@ -160,7 +160,7 @@
         <!-- 4. Conteúdo Multimídia (Vídeo e Imagem de Destaque - Movido para baixo) -->
         <section id="multimidia" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-200">
             <!-- Título com sublinhado na cor de destaque -->
-            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Introdução e Destaques</h3>
+            <h3 class="2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Introdução e Destaques</h3>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 
@@ -172,16 +172,16 @@
 
                     <div class="vertical-video-wrapper shadow-2xl">
                         <div class="vertical-video-container">
-                            <!-- PLACEHOLDER DO VÍDEO. Lembre-se de substituir o SRC pela URL pública de streaming. -->
-                            <video 
-                                src="https://youtube.com/shorts/yg8qxQM7WfM?feature=share" 
+                            <!-- VÍDEO DO YOUTUBE SHORTS EMBUTIDO. O aspecto 9:16 é mantido pelo CSS do container. -->
+                            <iframe 
+                                width="400" 
+                                height="711" 
+                                src="https://www.youtube.com/embed/yg8qxQM7WfM" 
                                 title="Vídeo de Boas-Vindas SEI" 
-                                controls 
-                                poster="https://placehold.co/400x711/105e94/ffffff?text=Video+Vertical+SEI"
-                                class="w-full h-full"
-                            >
-                                Seu navegador não suporta o elemento de vídeo.
-                            </video>
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                     <p class="text-center text-gray-600 mt-4 text-sm">
@@ -198,8 +198,8 @@
                     <p class="text-gray-600 mb-6">
                         Com o SEI, você garante mais agilidade, transparência, segurança e economia de recursos públicos.
                     </p>
-                    <!-- Placeholder para Imagem de Destaque sobre o SEI (Altura ajustada para 400px) -->
-                    <img src="https://placehold.co/800x400/1b8acb/ffffff?text=Imagem+de+Destaque+SEI+-+Eletrônico" 
+                    <!-- Imagem de Destaque: SRC alterado para um caminho relativo local -->
+                    <img src="imagem_sei_destaque.png" 
                          alt="Ilustração de sistema eletrônico e documentos digitais" 
                          class="w-full max-w-full rounded-lg shadow-xl"
                          onerror="this.onerror=null;this.src='https://placehold.co/800x400/1b8acb/ffffff?text=Imagem+de+Destaque+SEI'">
@@ -233,8 +233,5 @@
     </footer>
 
 </body>
-</html>
-</body>
-
 </html>
 
