@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEI Pedro Leopoldo - Sobre</title>
+    <!-- Carregando Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tema e Fontes -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sei-light': '#1b8acb', 
+                        'sei-accent': '#aec835', 
+                        'sei-dark': '#105e94', 
+                        'sei-bg': '#f3f4f6', 
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', 'Inter', sans-serif; background-color: theme('colors.sei-bg'); }
+        .section-title {
+            display: inline-block;
+            margin: 0 auto;
+            padding-bottom: 0.5rem;
+            border-bottom: 4px solid;
+            border-color: theme('colors.sei-accent');
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- 1. Cabeçalho (Header) - Navegação atualizada -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="LOGO SEI RESUMIDA - COLORIDA.png" alt="Logo SEI Pedro Leopoldo" class="h-12 w-auto shadow-lg">
+            </div>
+            <nav class="mt-3 sm:mt-0">
+                <a href="index.html#top-visual-banner" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Início</a>
+                <a href="documentos.html" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Documentos</a>
+                <a href="noticias.html" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Notícias</a>
+                <a href="sobre.html" class="text-sei-light font-bold transition duration-150 ease-in-out px-3 py-2">Sobre</a>
+                <a href="index.html#servicos" class="text-gray-600 hover:text-sei-light font-medium transition duration-150 ease-in-out px-3 py-2">Suporte</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="bg-sei-dark p-8 text-white text-center shadow-inner">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2">SEI: Transparência e Eficiência</h2>
+            <p class="text-lg opacity-90 max-w-3xl mx-auto">
+                Conheça a história e os princípios da implantação do Sistema Eletrônico de Informações em Pedro Leopoldo.
+            </p>
+        </div>
+
+        <!-- Conteúdo da Página Sobre -->
+        <section id="sobre-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center section-title">Sobre o SEI em Pedro Leopoldo</h3>
+            <div class="max-w-4xl mx-auto text-gray-700 space-y-6 text-lg">
+                <p>O SEI foi implementado em Pedro Leopoldo com o objetivo de modernizar a gestão documental, seguindo as diretrizes de desburocratização e eficiência administrativa. Nossa missão é promover um ambiente de trabalho sem papel, ágil e seguro, alinhado com as melhores práticas de administração pública digital.</p>
+                <p>O projeto representa um marco na transparência, permitindo o acompanhamento de processos em tempo real por parte dos cidadãos e garantindo maior controle interno. Além disso, a digitalização resultou em uma economia substancial em custos operacionais (papel, impressão, arquivamento) e ambientais.</p>
+                
+                <h4 class="text-xl font-semibold text-gray-700 pt-4">Princípios do SEI</h4>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li>Agilidade: Redução do tempo de trâmite processual.</li>
+                    <li>Segurança: Assinatura digital com validade jurídica.</li>
+                    <li>Transparência: Acesso facilitado e rastreabilidade total dos documentos.</li>
+                    <li>Sustentabilidade: Eliminação do uso de papel.</li>
+                </ul>
+
+                <p class="font-semibold text-sei-dark pt-4">Para mais informações sobre a equipe de implantação e gestão, ou se precisar de auxílio imediato, utilize o link de Suporte no menu de navegação, ou entre em contato pelos canais listados no rodapé.</p>
+            </div>
+        </section>
+        
+        <!-- Link de Retorno -->
+        <div class="text-center my-8">
+            <a href="index.html#top-visual-banner" class="inline-flex items-center text-sei-light hover:text-sei-dark font-medium">
+                &larr; Voltar para a Página Inicial
+            </a>
+        </div>
+    </main>
+
+    <!-- 2. Rodapé (Footer) -->
+    <footer id="contato" class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:flex md:justify-between md:items-center">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <p class="text-lg font-semibold mb-1">SEI Pedro Leopoldo</p>
+                <p class="text-sm text-gray-400">Sistema Eletrônico de Informações</p>
+                <p class="text-sm text-gray-400 mt-2">© 2025 Todos os direitos reservados.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="font-medium">Contato e Suporte:</p>
+                <p class="text-sm text-gray-400">Telefone: (31) XXXX-XXXX</p>
+                <p class="text-sm text-gray-400">E-mail: suporte.sei@pedroleopoldo.mg.gov.br</p>
+                <div class="mt-3 space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-sei-light">Facebook</a>
+                    <a href="#" class="text-gray-400 hover:text-sei-light">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
