@@ -175,23 +175,20 @@
         </section>
 
 
-        <!-- 5. Conteúdo Multimídia -->
-        <section id="multimidia" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-gray-200">
-            <!-- Título com sublinhado na cor de destaque -->
-            <h3 class="2xl font-bold text-gray-800 mb-8 text-center pb-2 border-b-4 border-sei-accent inline-block mx-auto">Introdução e Destaques</h3>
+       <!-- 5. Seção Multimédia (Dois Vídeos Lado a Lado) -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-gray-200 bg-white shadow-inner">
+            <div class="text-center mb-12">
+                <h3 class="text-2xl font-bold text-gray-800 section-title">Vídeos e Tutoriais</h3>
+            </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 
-                <!-- Coluna 1: Vídeo de Boas-Vindas -->
-                <div id="video" class="lg:order-2">
+                <!-- Vídeo 1: Boas-Vindas -->
+                <div class="flex flex-col items-center">
                     <h4 class="text-xl font-semibold text-gray-700 mb-4 text-center">Conheça o JoSEIas e saiba como ele pode te ajudar!</h4>
-
-                    <div class="vertical-video-wrapper shadow-2xl">
+                    <div class="vertical-video-wrapper shadow-2xl w-full">
                         <div class="vertical-video-container">
-                            <!-- VÍDEO DO YOUTUBE SHORTS EMBUTIDO. O aspecto 9:16 é mantido pelo CSS do container. -->
                             <iframe 
-                                width="400" 
-                                height="711" 
                                 src="https://www.youtube.com/embed/yg8qxQM7WfM" 
                                 title="Vídeo de Boas-Vindas SEI" 
                                 frameborder="0" 
@@ -200,33 +197,30 @@
                             </iframe>
                         </div>
                     </div>
-                    <p class="text-center text-gray-600 mt-4 text-sm">
-                        Assista a esta breve introdução para entender como o SEI pode transformar sua rotina de trabalho.
-                    </p>
                 </div>
 
-                <!-- Coluna 2: Imagem de Destaque/Texto Adicional (Imagem aumentada para 400px de altura) -->
-                <div class="lg:order-1 flex flex-col justify-center h-full">
-                    <h4 class="text-xl font-semibold text-gray-700 mb-4">O que é o SEI?</h4>
-                    <p class="text-gray-600 mb-4">
-                        O Sistema Eletrônico de Informações (SEI) é uma plataforma que permite a produção, edição, assinatura e trâmite de documentos e processos de forma totalmente digital.
-                    </p>
-                    <p class="text-gray-600 mb-6">
-                        Com o SEI, você garante mais agilidade, transparência, segurança e economia de recursos públicos.
-                    </p>
-                    <!-- Imagem de Destaque: SRC alterado para um caminho relativo local -->
-                    <img src="imagem_sei_destaque.png" 
-                         alt="Ilustração de sistema eletrônico e documentos digitais" 
-                         class="w-full max-w-full rounded-lg shadow-xl"
-                         onerror="this.onerror=null;this.src='https://placehold.co/800x400/1b8acb/ffffff?text=Imagem+de+Destaque+SEI'">
+                <!-- Vídeo 2: Novo Espaço para Vídeo -->
+                <div class="flex flex-col items-center">
+                    <h4 class="text-xl font-semibold text-gray-700 mb-4 text-center">Tutorial: Primeiros Passos no SEI</h4>
+                    <div class="vertical-video-wrapper shadow-2xl w-full">
+                        <div class="vertical-video-container">
+                            <!-- Substitua o src abaixo pelo link do segundo vídeo desejado -->
+                            <iframe 
+                                src="https://www.youtube.com/embed/placeholder_video_id" 
+                                title="Tutorial SEI" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </section>
 
-
     </main>
-
+    
     <!-- 6. Rodapé (Footer) -->
     <footer id="contato" class="bg-gray-800 text-white mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:flex md:justify-between md:items-center">
@@ -250,6 +244,7 @@
 
 </body>
 </html>
+
 
 
 
