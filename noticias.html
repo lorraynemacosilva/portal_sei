@@ -104,7 +104,7 @@ fetch('noticias.json')
   .then(noticias => {
     const container = document.getElementById('lista-noticias');
 
-    noticias.forEach(noticia => {
+    noticias.reverse().forEach(noticia => {
       container.innerHTML += `
         <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
           <img class="w-full h-48 object-cover" src="${noticia.imagem}" alt="${noticia.titulo}">
