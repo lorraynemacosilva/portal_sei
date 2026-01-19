@@ -65,43 +65,7 @@
         <!-- Conteúdo da Página de Notícias -->
         <section id="noticias-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center section-title">Últimas Notícias e Informações</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card Notícia 1 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/1b8acb/ffffff?text=Notícia+1" alt="Imagem da Notícia 1">
-                    <div class="p-5">
-                        <h4 class="font-bold text-xl text-sei-dark mb-2">SEI Recebe Nova Funcionalidade de Assinatura</h4>
-                        <p class="text-gray-600 text-sm">Leia sobre a implantação da nova ferramenta de assinatura digital e os benefícios para os servidores.</p>
-                        <a href="#" target="_blank" class="text-sei-light font-medium text-sm mt-3 inline-block hover:underline">Leia Mais &rarr;</a>
-                    </div>
-                </div>
-                <!-- Card Notícia 2 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/aec835/105e94?text=Notícia+2" alt="Imagem da Notícia 2">
-                    <div class="p-5">
-                        <h4 class="font-bold text-xl text-sei-dark mb-2">Próximo Treinamento de Capacitação SEI</h4>
-                        <p class="text-gray-600 text-sm">Detalhes sobre o workshop obrigatório para novos usuários, focado em criação de processos.</p>
-                        <a href="https://www.sympla.com.br/evento/workshop-sei-usar/3243502#compartilhar-evento?share_id=copiarlink" target="_blank" class="text-sei-light font-medium text-sm mt-3 inline-block hover:underline">Leia Mais &rarr;</a>
-                    </div>
-                </div>
-                <!-- Card Notícia 3 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/105e94/ffffff?text=Notícia+3" alt="Imagem da Notícia 3">
-                    <div class="p-5">
-                        <h4 class="font-bold text-xl text-sei-dark mb-2">Horários de Suporte Estendido em Dezembro</h4>
-                        <p class="text-gray-600 text-sm">Confira os horários especiais da equipe de suporte durante o recesso de fim de ano.</p>
-                        <a href="#" target="_blank" class="text-sei-light font-medium text-sm mt-3 inline-block hover:underline">Leia Mais &rarr;</a>
-                    </div>
-                </div>
-                <!-- Card Adicional para exemplo de notícias mais antigas -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
-                    <img class="w-full h-48 object-cover" src="https://placehold.co/600x400/292524/ffffff?text=Notícia+4" alt="Imagem da Notícia 4">
-                    <div class="p-5">
-                        <h4 class="font-bold text-xl text-sei-dark mb-2">Dica Rápida: Como Autuar Processos Eletrônicos</h4>
-                        <p class="text-gray-600 text-sm">Passo a passo simplificado para iniciar novos processos no SEI.</p>
-                        <a href="#" target="_blank" class="text-sei-light font-medium text-sm mt-3 inline-block hover:underline">Leia Mais &rarr;</a>
-                    </div>
-                </div>
+            <div id="lista-noticias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </div>
         </section>
         
@@ -133,6 +97,39 @@
             </div>
         </div>
     </footer>
+
+        <script>
+fetch('noticias.json')
+  .then(response => response.json())
+  .then(noticias => {
+    const container = document.getElementById('lista-noticias');
+
+    noticias.forEach(noticia => {
+      container.innerHTML += `
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 hover:shadow-xl transition duration-300">
+          <img class="w-full h-48 object-cover" src="${noticia.imagem}" alt="${noticia.titulo}">
+          <div class="p-5">
+            <h4 class="font-bold text-xl text-sei-dark mb-2">
+              ${noticia.titulo}
+            </h4>
+            <p class="text-gray-600 text-sm mb-3">
+              ${noticia.subtitulo}
+            </p>
+            <span class="block text-xs text-gray-400 mb-3">
+              ${noticia.data}
+            </span>
+            <a href="${noticia.link}" class="text-sei-light font-medium text-sm hover:underline">
+              Leia Mais &rarr;
+            </a>
+          </div>
+        </div>
+      `;
+    });
+  })
+  .catch(err => {
+    console.error('Erro ao carregar notícias:', err);
+  });
+</script>
 
 </body>
 </html>

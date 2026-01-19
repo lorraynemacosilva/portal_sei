@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor de Notícias - SEI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Editor Quill -->
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sei-light': '#1b8acb',
+            'sei-accent': '#aec835',
+            'sei-dark': '#105e94',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+<div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+
+  <h1 class="text-2xl font-bold text-sei-dark mb-6">
+    Editor de Notícias — SEI Pedro Leopoldo
+  </h1>
+
+  <!-- Campos -->
+  <div class="space-y-4">
+    <input id="titulo" class="w-full p-3 border rounded" placeholder="Título da notícia">
+    <input id="subtitulo" class="w-full p-3 border rounded" placeholder="Subtítulo">
+    <input id="imagem" class="w-full p-3 border rounded" placeholder="Nome da imagem (ex: imagem_sei_destaque.png)">
+    <input id="slug" class="w-full p-3 border rounded" placeholder="Slug (ex: inicio-implantacao-sei)">
+  </div>
+
+  <!-- Editor -->
+  <div class="mt-6">
+    <label class="font-medium mb-2 block">Conteúdo da notícia</label>
+    <div id="editor" class="bg-white"></div>
+  </div>
+
+  <!-- Botão -->
+  <button onclick="gerarJSON()"
+    class="mt-6 bg-sei-light text-white px-6 py-3 rounded hover:bg-sei-dark transition">
+    Gerar JSON da Notícia
+  </button>
+
+  <!-- Saída -->
+  <pre id="saida" class="mt-6 bg-gray-900 text-green-400 p-4 rounded text-sm overflow-x-auto"></pre>
+
+</div>
+
+<script>
+  const quill = new Quill('#editor', {
+    theme: 'snow',
+    placeholder: 'Escreva a notícia aqui...',
+    modules: {
+      toolbar: [
+        [{ header: [1, 2, false] }],
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['link'],
+        ['clean']
+      ]
+    }
+  });
+
+  function gerarJSON() {
+    const noticia = {
+      titulo: document.getElementById('titulo').value,
+      subtitulo: document.getElementById('subtitulo').value,
+      imagem: document.getElementById('imagem').value,
+      slug: document.getElementById('slug').value,
+      data: new Date().toLocaleDateString('pt-BR'),
+      link: `noticia.html?slug=${document.getElementById('slug').value}`,
+      conteudo: quill.root.innerHTML
+    };
+
+    document.getElementById('saida').textContent =
+      JSON.stringify(noticia, null, 2);
+  }
+</script>
+
+</body>
+</html>
