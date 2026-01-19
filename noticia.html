@@ -30,62 +30,56 @@
       font-family: 'Inter', sans-serif;
       background-color: #f3f4f6;
     }
+
+    /* Conteúdo do Quill */
     .prose img {
-    margin: 2rem auto;
-    border-radius: 8px;
-    max-width: 100%;
-    }
-    .prose figcaption {
-    text-align: center;
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin-top: 0.5rem;
+      margin: 2rem auto;
+      border-radius: 8px;
+      max-width: 100%;
     }
 
     /* Imagem de capa */
-.noticia-capa {
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
+    .noticia-capa {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
 
-/* Galeria deslizante */
-.slider {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 1rem 0;
-  margin-top: 2rem;
-}
+    /* Galeria deslizante */
+    .slider {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 1rem 0;
+      margin-top: 2.5rem;
+    }
 
-.slider img {
-  flex: 0 0 auto;
-  width: 260px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
-  scroll-snap-align: start;
-}
+    .slider img {
+      flex: 0 0 auto;
+      width: 260px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      scroll-snap-align: start;
+    }
 
-/* Remove barra feia em alguns navegadores */
-.slider::-webkit-scrollbar {
-  height: 8px;
-}
+    .slider::-webkit-scrollbar {
+      height: 8px;
+    }
 
-.slider::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 4px;
-}
-
+    .slider::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
 <body class="min-h-screen flex flex-col">
 
-<!-- HEADER (igual ao resto do site) -->
+<!-- HEADER -->
 <header class="bg-white shadow-md">
   <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
     <img src="LOGO SEI RESUMIDA - COLORIDA.png" class="h-12">
@@ -99,8 +93,10 @@
 
 <!-- CONTEÚDO -->
 <main class="flex-grow">
-  <article id="noticia" class="max-w-4xl mx-auto bg-white mt-10 p-8 rounded-lg shadow-lg">
-    <!-- Conteúdo será injetado via JS -->
+  <article
+    id="noticia"
+    class="max-w-4xl mx-auto bg-white mt-10 p-8 rounded-lg shadow-lg">
+    <!-- Conteúdo injetado via JS -->
   </article>
 </main>
 
@@ -112,47 +108,70 @@
 </footer>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const slug = params.get('slug');
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('slug');
 
-fetch('noticias.json')
-  .then(res => res.json())
-  .then(noticias => {
-    const noticia = noticias.find(n => n.slug === slug);
+  fetch('noticias.json')
+    .then(res => res.json())
+    .then(noticias => {
+      const noticia = noticias.find(n => n.slug === slug);
 
-    if (!noticia) {
+      if (!noticia) {
+        document.getElementById('noticia').innerHTML =
+          '<p class="text-center text-red-600">Notícia não encontrada.</p>';
+        return;
+      }
+
+      document.getElementById('noticia').innerHTML = `
+        <h1 class="text-3xl font-bold text-sei-dark mb-3">
+          ${noticia.titulo}
+        </h1>
+
+        <p class="text-lg text-gray-600 mb-4">
+          ${noticia.subtitulo || ''}
+        </p>
+
+        <span class="block text-sm text-gray-400 mb-6">
+          Publicado em ${noticia.data}
+        </span>
+
+        ${
+          noticia.imagem
+            ? `<img src="${noticia.imagem}" class="noticia-capa">`
+            : ''
+        }
+
+        <div class="prose max-w-none text-gray-800">
+          ${noticia.conteudo || ''}
+        </div>
+
+        ${
+          noticia.galeria && noticia.galeria.length
+            ? `
+              <h3 class="text-xl font-semibold text-sei-dark mt-10 mb-4">
+                Galeria de Imagens
+              </h3>
+              <div class="slider">
+                ${noticia.galeria.map(img => `<img src="${img}" alt="">`).join('')}
+              </div>
+            `
+            : ''
+        }
+
+        <div class="mt-10">
+          <a href="noticias.html" class="text-sei-light hover:underline">
+            ← Voltar para notícias
+          </a>
+        </div>
+      `;
+    })
+    .catch(err => {
       document.getElementById('noticia').innerHTML =
-        '<p class="text-center text-red-600">Notícia não encontrada.</p>';
-      return;
-    }
-
-    document.getElementById('noticia').innerHTML = `
-      <h1 class="text-3xl font-bold text-sei-dark mb-3">
-        ${noticia.titulo}
-      </h1>
-
-      <p class="text-lg text-gray-600 mb-4">
-        ${noticia.subtitulo}
-      </p>
-
-      <span class="block text-sm text-gray-400 mb-6">
-        Publicado em ${noticia.data}
-      </span>
-
-      <img src="${noticia.imagem}" class="noticia-capa">
-
-      <div class="prose max-w-none text-gray-800">
-        ${noticia.conteudo || ''}
-      </div>
-
-      <div class="mt-8">
-        <a href="noticias.html" class="text-sei-light hover:underline">
-          ← Voltar para notícias
-        </a>
-      </div>
-    `;
-  });
+        '<p class="text-center text-red-600">Erro ao carregar a notícia.</p>';
+      console.error(err);
+    });
 </script>
 
 </body>
 </html>
+
