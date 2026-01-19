@@ -41,6 +41,45 @@
     color: #6b7280;
     margin-top: 0.5rem;
     }
+
+    /* Imagem de capa */
+.noticia-capa {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Galeria deslizante */
+.slider {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+.slider img {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  scroll-snap-align: start;
+}
+
+/* Remove barra feia em alguns navegadores */
+.slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.slider::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
   </style>
 </head>
 
@@ -100,7 +139,7 @@ fetch('noticias.json')
         Publicado em ${noticia.data}
       </span>
 
-      <img src="${noticia.imagem}" class="w-full rounded-lg mb-6">
+      <img src="${noticia.imagem}" class="noticia-capa">
 
       <div class="prose max-w-none text-gray-800">
         ${noticia.conteudo || ''}

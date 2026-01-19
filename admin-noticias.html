@@ -8,7 +8,7 @@
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Editor Quill -->
+  <!-- Quill -->
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
@@ -19,7 +19,7 @@
           colors: {
             'sei-light': '#1b8acb',
             'sei-accent': '#aec835',
-            'sei-dark': '#105e94',
+            'sei-dark': '#105e94'
           }
         }
       }
@@ -35,28 +35,47 @@
     Editor de Notícias — SEI Pedro Leopoldo
   </h1>
 
-  <!-- Campos -->
+  <!-- CAMPOS PRINCIPAIS -->
   <div class="space-y-4">
-    <input id="titulo" class="w-full p-3 border rounded" placeholder="Título da notícia">
-    <input id="subtitulo" class="w-full p-3 border rounded" placeholder="Subtítulo">
-    <input id="imagem" class="w-full p-3 border rounded" placeholder="Nome da imagem (ex: imagem_sei_destaque.png)">
-    <input id="slug" class="w-full p-3 border rounded" placeholder="Slug (ex: inicio-implantacao-sei)">
+    <input id="titulo" class="w-full p-3 border rounded"
+      placeholder="Título da notícia">
+
+    <input id="subtitulo" class="w-full p-3 border rounded"
+      placeholder="Subtítulo da notícia">
+
+    <input id="imagemCapa" class="w-full p-3 border rounded"
+      placeholder="Imagem de capa (ex: imagens/noticias/capa-sei.jpg)">
+
+    <input id="slug" class="w-full p-3 border rounded"
+      placeholder="Slug (ex: inicio-implantacao-sei)">
+
+    <textarea id="galeria" rows="4"
+      class="w-full p-3 border rounded"
+      placeholder="Galeria de imagens (uma por linha)
+imagens/noticias/sei-01.jpg
+imagens/noticias/sei-02.jpg"></textarea>
   </div>
 
-  <!-- Editor -->
+  <!-- EDITOR -->
   <div class="mt-6">
-    <label class="font-medium mb-2 block">Conteúdo da notícia</label>
+    <label class="font-medium mb-2 block">
+      Conteúdo da notícia
+    </label>
     <div id="editor" class="bg-white"></div>
   </div>
 
-  <!-- Botão -->
+  <!-- BOTÃO -->
   <button onclick="gerarJSON()"
     class="mt-6 bg-sei-light text-white px-6 py-3 rounded hover:bg-sei-dark transition">
     Gerar JSON da Notícia
   </button>
 
-  <!-- Saída -->
-  <pre id="saida" class="mt-6 bg-gray-900 text-green-400 p-4 rounded text-sm overflow-x-auto"></pre>
+  <!-- SAÍDA -->
+  <div class="mt-6">
+    <label class="font-medium block mb-2">JSON gerado</label>
+    <pre id="saida"
+      class="bg-gray-900 text-green-400 p-4 rounded text-sm overflow-x-auto"></pre>
+  </div>
 
 </div>
 
@@ -69,21 +88,27 @@
         [{ header: [1, 2, false] }],
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
-        ['link', 'image'],
+        ['link'],
         ['clean']
       ]
     }
   });
 
   function gerarJSON() {
+    const galeriaRaw = document.getElementById('galeria').value;
+
     const noticia = {
       titulo: document.getElementById('titulo').value,
       subtitulo: document.getElementById('subtitulo').value,
-      imagem: document.getElementById('imagem').value,
+      imagem: document.getElementById('imagemCapa').value,
       slug: document.getElementById('slug').value,
       data: new Date().toLocaleDateString('pt-BR'),
       link: `noticia.html?slug=${document.getElementById('slug').value}`,
-      conteudo: quill.root.innerHTML
+      conteudo: quill.root.innerHTML,
+      galeria: galeriaRaw
+        .split('\n')
+        .map(l => l.trim())
+        .filter(Boolean)
     };
 
     document.getElementById('saida').textContent =
